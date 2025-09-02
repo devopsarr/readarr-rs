@@ -32,7 +32,7 @@ pub enum PutAuthorEditorError {
 
 pub async fn delete_author_editor(configuration: &configuration::Configuration, author_editor_resource: Option<models::AuthorEditorResource>) -> Result<(), Error<DeleteAuthorEditorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_author_editor_resource = author_editor_resource;
+    let p_body_author_editor_resource = author_editor_resource;
 
     let uri_str = format!("{}/api/v1/author/editor", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
@@ -56,7 +56,7 @@ pub async fn delete_author_editor(configuration: &configuration::Configuration, 
         };
         req_builder = req_builder.header("X-Api-Key", value);
     };
-    req_builder = req_builder.json(&p_author_editor_resource);
+    req_builder = req_builder.json(&p_body_author_editor_resource);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -74,7 +74,7 @@ pub async fn delete_author_editor(configuration: &configuration::Configuration, 
 
 pub async fn put_author_editor(configuration: &configuration::Configuration, author_editor_resource: Option<models::AuthorEditorResource>) -> Result<(), Error<PutAuthorEditorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_author_editor_resource = author_editor_resource;
+    let p_body_author_editor_resource = author_editor_resource;
 
     let uri_str = format!("{}/api/v1/author/editor", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -98,7 +98,7 @@ pub async fn put_author_editor(configuration: &configuration::Configuration, aut
         };
         req_builder = req_builder.header("X-Api-Key", value);
     };
-    req_builder = req_builder.json(&p_author_editor_resource);
+    req_builder = req_builder.json(&p_body_author_editor_resource);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

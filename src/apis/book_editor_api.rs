@@ -32,7 +32,7 @@ pub enum PutBookEditorError {
 
 pub async fn delete_book_editor(configuration: &configuration::Configuration, book_editor_resource: Option<models::BookEditorResource>) -> Result<(), Error<DeleteBookEditorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_book_editor_resource = book_editor_resource;
+    let p_body_book_editor_resource = book_editor_resource;
 
     let uri_str = format!("{}/api/v1/book/editor", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
@@ -56,7 +56,7 @@ pub async fn delete_book_editor(configuration: &configuration::Configuration, bo
         };
         req_builder = req_builder.header("X-Api-Key", value);
     };
-    req_builder = req_builder.json(&p_book_editor_resource);
+    req_builder = req_builder.json(&p_body_book_editor_resource);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -74,7 +74,7 @@ pub async fn delete_book_editor(configuration: &configuration::Configuration, bo
 
 pub async fn put_book_editor(configuration: &configuration::Configuration, book_editor_resource: Option<models::BookEditorResource>) -> Result<(), Error<PutBookEditorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_book_editor_resource = book_editor_resource;
+    let p_body_book_editor_resource = book_editor_resource;
 
     let uri_str = format!("{}/api/v1/book/editor", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -98,7 +98,7 @@ pub async fn put_book_editor(configuration: &configuration::Configuration, book_
         };
         req_builder = req_builder.header("X-Api-Key", value);
     };
-    req_builder = req_builder.json(&p_book_editor_resource);
+    req_builder = req_builder.json(&p_body_book_editor_resource);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;

@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost:8787*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_feed_v1_calendar_readarr_period_ics**](CalendarFeedApi.md#get_feed_v1_calendar_readarr_period_ics) | **GET** /feed/v1/calendar/readarr.ics | 
+[**get_feed_v1_calendar_readarr_ics**](CalendarFeedApi.md#get_feed_v1_calendar_readarr_ics) | **GET** /feed/v1/calendar/readarr.ics | 
 
 
 
-## get_feed_v1_calendar_readarr_period_ics
+## get_feed_v1_calendar_readarr_ics
 
-> get_feed_v1_calendar_readarr_period_ics(past_days, future_days, tag_list, unmonitored)
+> get_feed_v1_calendar_readarr_ics(past_days, future_days, tag_list, unmonitored)
 
 
 ### Parameters

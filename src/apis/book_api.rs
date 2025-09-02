@@ -67,7 +67,7 @@ pub enum UpdateBookError {
 
 pub async fn create_book(configuration: &configuration::Configuration, book_resource: Option<models::BookResource>) -> Result<models::BookResource, Error<CreateBookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_book_resource = book_resource;
+    let p_body_book_resource = book_resource;
 
     let uri_str = format!("{}/api/v1/book", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
@@ -91,7 +91,7 @@ pub async fn create_book(configuration: &configuration::Configuration, book_reso
         };
         req_builder = req_builder.header("X-Api-Key", value);
     };
-    req_builder = req_builder.json(&p_book_resource);
+    req_builder = req_builder.json(&p_body_book_resource);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -120,17 +120,17 @@ pub async fn create_book(configuration: &configuration::Configuration, book_reso
 
 pub async fn delete_book(configuration: &configuration::Configuration, id: i32, delete_files: Option<bool>, add_import_list_exclusion: Option<bool>) -> Result<(), Error<DeleteBookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_id = id;
-    let p_delete_files = delete_files;
-    let p_add_import_list_exclusion = add_import_list_exclusion;
+    let p_path_id = id;
+    let p_query_delete_files = delete_files;
+    let p_query_add_import_list_exclusion = add_import_list_exclusion;
 
-    let uri_str = format!("{}/api/v1/book/{id}", configuration.base_path, id=p_id);
+    let uri_str = format!("{}/api/v1/book/{id}", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    if let Some(ref param_value) = p_delete_files {
+    if let Some(ref param_value) = p_query_delete_files {
         req_builder = req_builder.query(&[("deleteFiles", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_add_import_list_exclusion {
+    if let Some(ref param_value) = p_query_add_import_list_exclusion {
         req_builder = req_builder.query(&[("addImportListExclusion", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -169,9 +169,9 @@ pub async fn delete_book(configuration: &configuration::Configuration, id: i32, 
 
 pub async fn get_book_by_id(configuration: &configuration::Configuration, id: i32) -> Result<models::BookResource, Error<GetBookByIdError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_id = id;
+    let p_path_id = id;
 
-    let uri_str = format!("{}/api/v1/book/{id}", configuration.base_path, id=p_id);
+    let uri_str = format!("{}/api/v1/book/{id}", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -221,9 +221,9 @@ pub async fn get_book_by_id(configuration: &configuration::Configuration, id: i3
 
 pub async fn get_book_overview(configuration: &configuration::Configuration, id: i32) -> Result<(), Error<GetBookOverviewError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_id = id;
+    let p_path_id = id;
 
-    let uri_str = format!("{}/api/v1/book/{id}/overview", configuration.base_path, id=p_id);
+    let uri_str = format!("{}/api/v1/book/{id}/overview", configuration.base_path, id=p_path_id);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -262,27 +262,27 @@ pub async fn get_book_overview(configuration: &configuration::Configuration, id:
 
 pub async fn list_book(configuration: &configuration::Configuration, author_id: Option<i32>, book_ids: Option<Vec<i32>>, title_slug: Option<&str>, include_all_author_books: Option<bool>) -> Result<Vec<models::BookResource>, Error<ListBookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_author_id = author_id;
-    let p_book_ids = book_ids;
-    let p_title_slug = title_slug;
-    let p_include_all_author_books = include_all_author_books;
+    let p_query_author_id = author_id;
+    let p_query_book_ids = book_ids;
+    let p_query_title_slug = title_slug;
+    let p_query_include_all_author_books = include_all_author_books;
 
     let uri_str = format!("{}/api/v1/book", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_author_id {
+    if let Some(ref param_value) = p_query_author_id {
         req_builder = req_builder.query(&[("authorId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_book_ids {
+    if let Some(ref param_value) = p_query_book_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("bookIds".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("bookIds", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_title_slug {
+    if let Some(ref param_value) = p_query_title_slug {
         req_builder = req_builder.query(&[("titleSlug", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_include_all_author_books {
+    if let Some(ref param_value) = p_query_include_all_author_books {
         req_builder = req_builder.query(&[("includeAllAuthorBooks", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
@@ -332,7 +332,7 @@ pub async fn list_book(configuration: &configuration::Configuration, author_id: 
 
 pub async fn put_book_monitor(configuration: &configuration::Configuration, books_monitored_resource: Option<models::BooksMonitoredResource>) -> Result<(), Error<PutBookMonitorError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_books_monitored_resource = books_monitored_resource;
+    let p_body_books_monitored_resource = books_monitored_resource;
 
     let uri_str = format!("{}/api/v1/book/monitor", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
@@ -356,7 +356,7 @@ pub async fn put_book_monitor(configuration: &configuration::Configuration, book
         };
         req_builder = req_builder.header("X-Api-Key", value);
     };
-    req_builder = req_builder.json(&p_books_monitored_resource);
+    req_builder = req_builder.json(&p_body_books_monitored_resource);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
@@ -374,10 +374,10 @@ pub async fn put_book_monitor(configuration: &configuration::Configuration, book
 
 pub async fn update_book(configuration: &configuration::Configuration, id: &str, book_resource: Option<models::BookResource>) -> Result<models::BookResource, Error<UpdateBookError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_id = id;
-    let p_book_resource = book_resource;
+    let p_path_id = id;
+    let p_body_book_resource = book_resource;
 
-    let uri_str = format!("{}/api/v1/book/{id}", configuration.base_path, id=crate::apis::urlencode(p_id));
+    let uri_str = format!("{}/api/v1/book/{id}", configuration.base_path, id=crate::apis::urlencode(p_path_id));
     let mut req_builder = configuration.client.request(reqwest::Method::PUT, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -399,7 +399,7 @@ pub async fn update_book(configuration: &configuration::Configuration, id: &str,
         };
         req_builder = req_builder.header("X-Api-Key", value);
     };
-    req_builder = req_builder.json(&p_book_resource);
+    req_builder = req_builder.json(&p_body_book_resource);
 
     let req = req_builder.build()?;
     let resp = configuration.client.execute(req).await?;
