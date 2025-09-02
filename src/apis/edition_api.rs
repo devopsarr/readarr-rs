@@ -25,12 +25,12 @@ pub enum ListEditionError {
 
 pub async fn list_edition(configuration: &configuration::Configuration, book_id: Option<Vec<i32>>) -> Result<Vec<models::EditionResource>, Error<ListEditionError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_book_id = book_id;
+    let p_query_book_id = book_id;
 
     let uri_str = format!("{}/api/v1/edition", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_book_id {
+    if let Some(ref param_value) = p_query_book_id {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("bookId".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("bookId", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),

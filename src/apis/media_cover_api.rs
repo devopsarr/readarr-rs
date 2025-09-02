@@ -32,10 +32,10 @@ pub enum GetMediaCoverBookByFilenameError {
 
 pub async fn get_media_cover_author_by_filename(configuration: &configuration::Configuration, author_id: i32, filename: &str) -> Result<(), Error<GetMediaCoverAuthorByFilenameError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_author_id = author_id;
-    let p_filename = filename;
+    let p_path_author_id = author_id;
+    let p_path_filename = filename;
 
-    let uri_str = format!("{}/api/v1/mediacover/author/{authorId}/{filename}", configuration.base_path, authorId=p_author_id, filename=crate::apis::urlencode(p_filename));
+    let uri_str = format!("{}/api/v1/mediacover/author/{authorId}/{filename}", configuration.base_path, authorId=p_path_author_id, filename=crate::apis::urlencode(p_path_filename));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {
@@ -74,10 +74,10 @@ pub async fn get_media_cover_author_by_filename(configuration: &configuration::C
 
 pub async fn get_media_cover_book_by_filename(configuration: &configuration::Configuration, book_id: i32, filename: &str) -> Result<(), Error<GetMediaCoverBookByFilenameError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_book_id = book_id;
-    let p_filename = filename;
+    let p_path_book_id = book_id;
+    let p_path_filename = filename;
 
-    let uri_str = format!("{}/api/v1/mediacover/book/{bookId}/{filename}", configuration.base_path, bookId=p_book_id, filename=crate::apis::urlencode(p_filename));
+    let uri_str = format!("{}/api/v1/mediacover/book/{bookId}/{filename}", configuration.base_path, bookId=p_path_book_id, filename=crate::apis::urlencode(p_path_filename));
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
     if let Some(ref apikey) = configuration.api_key {

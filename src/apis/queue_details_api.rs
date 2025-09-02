@@ -25,27 +25,27 @@ pub enum ListQueueDetailsError {
 
 pub async fn list_queue_details(configuration: &configuration::Configuration, author_id: Option<i32>, book_ids: Option<Vec<i32>>, include_author: Option<bool>, include_book: Option<bool>) -> Result<Vec<models::QueueResource>, Error<ListQueueDetailsError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_author_id = author_id;
-    let p_book_ids = book_ids;
-    let p_include_author = include_author;
-    let p_include_book = include_book;
+    let p_query_author_id = author_id;
+    let p_query_book_ids = book_ids;
+    let p_query_include_author = include_author;
+    let p_query_include_book = include_book;
 
     let uri_str = format!("{}/api/v1/queue/details", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_author_id {
+    if let Some(ref param_value) = p_query_author_id {
         req_builder = req_builder.query(&[("authorId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_book_ids {
+    if let Some(ref param_value) = p_query_book_ids {
         req_builder = match "multi" {
             "multi" => req_builder.query(&param_value.into_iter().map(|p| ("bookIds".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
             _ => req_builder.query(&[("bookIds", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref param_value) = p_include_author {
+    if let Some(ref param_value) = p_query_include_author {
         req_builder = req_builder.query(&[("includeAuthor", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_include_book {
+    if let Some(ref param_value) = p_query_include_book {
         req_builder = req_builder.query(&[("includeBook", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {

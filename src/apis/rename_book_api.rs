@@ -25,16 +25,16 @@ pub enum ListRenameError {
 
 pub async fn list_rename(configuration: &configuration::Configuration, author_id: Option<i32>, book_id: Option<i32>) -> Result<Vec<models::RenameBookResource>, Error<ListRenameError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_author_id = author_id;
-    let p_book_id = book_id;
+    let p_query_author_id = author_id;
+    let p_query_book_id = book_id;
 
     let uri_str = format!("{}/api/v1/rename", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    if let Some(ref param_value) = p_author_id {
+    if let Some(ref param_value) = p_query_author_id {
         req_builder = req_builder.query(&[("authorId", &param_value.to_string())]);
     }
-    if let Some(ref param_value) = p_book_id {
+    if let Some(ref param_value) = p_query_book_id {
         req_builder = req_builder.query(&[("bookId", &param_value.to_string())]);
     }
     if let Some(ref apikey) = configuration.api_key {
