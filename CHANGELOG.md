@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/devopsarr/readarr-rs/compare/v0.1.1...v0.1.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* **deps:** update openapitools/openapi-generator-cli docker tag to v7.17.0 ([bdb59fc](https://github.com/devopsarr/readarr-rs/commit/bdb59fcfb110112a4042eca2d0f697098b6b456a))
+
 ## [0.1.1](https://github.com/devopsarr/readarr-rs/compare/v0.1.0...v0.1.1) (2025-09-02)
 
 
