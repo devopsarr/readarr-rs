@@ -19,7 +19,7 @@ Method | HTTP request | Description
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **author_id** | Option<**i32**> |  |  |
-**book_ids** | Option<[**Vec<i32>**](i32.md)> |  |  |
+**book_ids** | Option<[**Vec<i32>**](I32.md)> |  |  |
 **include_author** | Option<**bool**> |  |  |[default to false]
 **include_book** | Option<**bool**> |  |  |[default to true]
 

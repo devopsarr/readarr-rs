@@ -108,8 +108,8 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **author_id** | Option<**i32**> |  |  |
-**book_file_ids** | Option<[**Vec<i32>**](i32.md)> |  |  |
-**book_id** | Option<[**Vec<i32>**](i32.md)> |  |  |
+**book_file_ids** | Option<[**Vec<i32>**](I32.md)> |  |  |
+**book_id** | Option<[**Vec<i32>**](I32.md)> |  |  |
 **unmapped** | Option<**bool**> |  |  |
 
 ### Return type
