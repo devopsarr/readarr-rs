@@ -139,7 +139,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **author_id** | Option<**i32**> |  |  |
-**book_ids** | Option<[**Vec<i32>**](i32.md)> |  |  |
+**book_ids** | Option<[**Vec<i32>**](I32.md)> |  |  |
 **title_slug** | Option<**String**> |  |  |
 **include_all_author_books** | Option<**bool**> |  |  |[default to false]
 

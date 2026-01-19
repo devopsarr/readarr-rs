@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **added** | Option<**String**> |  | [optional]
 **quality_profile_id** | Option<**i32**> |  | [optional]
 **metadata_profile_id** | Option<**i32**> |  | [optional]
-**tags** | Option<**Vec<i32>**> |  | [optional]
+**tags** | Option<**HashSet<i32>**> |  | [optional]
 **add_options** | Option<[**models::AddAuthorOptions**](AddAuthorOptions.md)> |  | [optional]
 **metadata** | Option<[**models::AuthorMetadataLazyLoaded**](AuthorMetadataLazyLoaded.md)> |  | [optional]
 **quality_profile** | Option<[**models::QualityProfileLazyLoaded**](QualityProfileLazyLoaded.md)> |  | [optional]

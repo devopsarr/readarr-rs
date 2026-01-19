@@ -175,7 +175,7 @@ pub async fn get_queue(configuration: &configuration::Configuration, page: Optio
         req_builder = req_builder.query(&[("sortKey", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_sort_direction {
-        req_builder = req_builder.query(&[("sortDirection", &serde_json::to_string(param_value)?)]);
+        req_builder = req_builder.query(&[("sortDirection", &param_value.to_string())]);
     }
     if let Some(ref param_value) = p_query_include_unknown_author_items {
         req_builder = req_builder.query(&[("includeUnknownAuthorItems", &param_value.to_string())]);

@@ -52,10 +52,10 @@ Name | Type | Description  | Required | Notes
 **page** | Option<**i32**> |  |  |[default to 1]
 **page_size** | Option<**i32**> |  |  |[default to 10]
 **sort_key** | Option<**String**> |  |  |
-**sort_direction** | Option<[**SortDirection**](.md)> |  |  |
+**sort_direction** | Option<[**SortDirection**](SortDirection.md)> |  |  |
 **include_author** | Option<**bool**> |  |  |
 **include_book** | Option<**bool**> |  |  |
-**event_type** | Option<[**Vec<i32>**](i32.md)> |  |  |
+**event_type** | Option<[**Vec<i32>**](I32.md)> |  |  |
 **book_id** | Option<**i32**> |  |  |
 **download_id** | Option<**String**> |  |  |
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **author_id** | Option<**i32**> |  |  |
 **book_id** | Option<**i32**> |  |  |
-**event_type** | Option<[**EntityHistoryEventType**](.md)> |  |  |
+**event_type** | Option<[**EntityHistoryEventType**](EntityHistoryEventType.md)> |  |  |
 **include_author** | Option<**bool**> |  |  |[default to false]
 **include_book** | Option<**bool**> |  |  |[default to false]
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Required | Notes
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **date** | Option<**String**> |  |  |
-**event_type** | Option<[**EntityHistoryEventType**](.md)> |  |  |
+**event_type** | Option<[**EntityHistoryEventType**](EntityHistoryEventType.md)> |  |  |
 **include_author** | Option<**bool**> |  |  |[default to false]
 **include_book** | Option<**bool**> |  |  |[default to false]
 

@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **clean_name** | Option<**String**> |  | [optional]
 **sort_name** | Option<**String**> |  | [optional]
 **sort_name_last_first** | Option<**String**> |  | [optional]
-**tags** | Option<**Vec<i32>**> |  | [optional]
+**tags** | Option<**HashSet<i32>**> |  | [optional]
 **added** | Option<**String**> |  | [optional]
 **add_options** | Option<[**models::AddAuthorOptions**](AddAuthorOptions.md)> |  | [optional]
 **ratings** | Option<[**models::Ratings**](Ratings.md)> |  | [optional]
