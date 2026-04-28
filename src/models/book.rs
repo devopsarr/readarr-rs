@@ -26,7 +26,7 @@ pub struct Book {
     #[serde(rename = "title", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub title: Option<Option<String>>,
     #[serde(rename = "releaseDate", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub release_date: Option<Option<String>>,
+    pub release_date: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "links", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub links: Option<Option<Vec<models::Links>>>,
     #[serde(rename = "genres", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
@@ -36,7 +36,7 @@ pub struct Book {
     #[serde(rename = "ratings", skip_serializing_if = "Option::is_none")]
     pub ratings: Option<Box<models::Ratings>>,
     #[serde(rename = "lastSearchTime", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub last_search_time: Option<Option<String>>,
+    pub last_search_time: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "cleanTitle", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub clean_title: Option<Option<String>>,
     #[serde(rename = "monitored", skip_serializing_if = "Option::is_none")]
@@ -44,9 +44,9 @@ pub struct Book {
     #[serde(rename = "anyEditionOk", skip_serializing_if = "Option::is_none")]
     pub any_edition_ok: Option<bool>,
     #[serde(rename = "lastInfoSync", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub last_info_sync: Option<Option<String>>,
+    pub last_info_sync: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "added", skip_serializing_if = "Option::is_none")]
-    pub added: Option<String>,
+    pub added: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "addOptions", skip_serializing_if = "Option::is_none")]
     pub add_options: Option<Box<models::AddBookOptions>>,
     #[serde(rename = "authorMetadata", skip_serializing_if = "Option::is_none")]

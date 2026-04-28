@@ -24,7 +24,7 @@ pub struct BookFileResource {
     #[serde(rename = "size", skip_serializing_if = "Option::is_none")]
     pub size: Option<i64>,
     #[serde(rename = "dateAdded", skip_serializing_if = "Option::is_none")]
-    pub date_added: Option<String>,
+    pub date_added: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "quality", skip_serializing_if = "Option::is_none")]
     pub quality: Option<Box<models::QualityModel>>,
     #[serde(rename = "qualityWeight", skip_serializing_if = "Option::is_none")]

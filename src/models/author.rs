@@ -24,13 +24,13 @@ pub struct Author {
     #[serde(rename = "monitorNewItems", skip_serializing_if = "Option::is_none")]
     pub monitor_new_items: Option<models::NewItemMonitorTypes>,
     #[serde(rename = "lastInfoSync", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub last_info_sync: Option<Option<String>>,
+    pub last_info_sync: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "path", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub path: Option<Option<String>>,
     #[serde(rename = "rootFolderPath", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub root_folder_path: Option<Option<String>>,
     #[serde(rename = "added", skip_serializing_if = "Option::is_none")]
-    pub added: Option<String>,
+    pub added: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "qualityProfileId", skip_serializing_if = "Option::is_none")]
     pub quality_profile_id: Option<i32>,
     #[serde(rename = "metadataProfileId", skip_serializing_if = "Option::is_none")]

@@ -117,7 +117,7 @@ Name | Type | Description  | Required | Notes
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**date** | Option<**String**> |  |  |
+**date** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  |  |
 **event_type** | Option<[**EntityHistoryEventType**](EntityHistoryEventType.md)> |  |  |
 **include_author** | Option<**bool**> |  |  |[default to false]
 **include_book** | Option<**bool**> |  |  |[default to false]

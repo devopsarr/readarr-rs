@@ -42,7 +42,7 @@ pub struct Edition {
     #[serde(rename = "pageCount", skip_serializing_if = "Option::is_none")]
     pub page_count: Option<i32>,
     #[serde(rename = "releaseDate", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub release_date: Option<Option<String>>,
+    pub release_date: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "images", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub images: Option<Option<Vec<models::MediaCover>>>,
     #[serde(rename = "links", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]

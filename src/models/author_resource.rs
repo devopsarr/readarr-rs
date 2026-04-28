@@ -66,7 +66,7 @@ pub struct AuthorResource {
     #[serde(rename = "tags", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub tags: Option<Option<Vec<i32>>>,
     #[serde(rename = "added", skip_serializing_if = "Option::is_none")]
-    pub added: Option<String>,
+    pub added: Option<chrono::DateTime<chrono::FixedOffset>>,
     #[serde(rename = "addOptions", skip_serializing_if = "Option::is_none")]
     pub add_options: Option<Box<models::AddAuthorOptions>>,
     #[serde(rename = "ratings", skip_serializing_if = "Option::is_none")]
