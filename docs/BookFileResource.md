@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **book_id** | Option<**i32**> |  | [optional]
 **path** | Option<**String**> |  | [optional]
 **size** | Option<**i64**> |  | [optional]
-**date_added** | Option<**String**> |  | [optional]
+**date_added** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **quality** | Option<[**models::QualityModel**](QualityModel.md)> |  | [optional]
 **quality_weight** | Option<**i32**> |  | [optional]
 **indexer_flags** | Option<**i32**> |  | [optional]

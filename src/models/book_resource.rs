@@ -40,7 +40,7 @@ pub struct BookResource {
     #[serde(rename = "ratings", skip_serializing_if = "Option::is_none")]
     pub ratings: Option<Box<models::Ratings>>,
     #[serde(rename = "releaseDate", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub release_date: Option<Option<String>>,
+    pub release_date: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "pageCount", skip_serializing_if = "Option::is_none")]
     pub page_count: Option<i32>,
     #[serde(rename = "genres", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
@@ -54,7 +54,7 @@ pub struct BookResource {
     #[serde(rename = "statistics", skip_serializing_if = "Option::is_none")]
     pub statistics: Option<Box<models::BookStatisticsResource>>,
     #[serde(rename = "added", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub added: Option<Option<String>>,
+    pub added: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "addOptions", skip_serializing_if = "Option::is_none")]
     pub add_options: Option<Box<models::AddBookOptions>>,
     #[serde(rename = "remoteCover", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]

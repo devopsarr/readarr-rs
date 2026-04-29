@@ -38,9 +38,9 @@ pub struct AuthorMetadata {
     #[serde(rename = "hometown", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub hometown: Option<Option<String>>,
     #[serde(rename = "born", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub born: Option<Option<String>>,
+    pub born: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "died", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub died: Option<Option<String>>,
+    pub died: Option<Option<chrono::DateTime<chrono::FixedOffset>>>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::AuthorStatusType>,
     #[serde(rename = "images", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]

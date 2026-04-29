@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **disambiguation** | Option<**String**> |  | [optional]
 **publisher** | Option<**String**> |  | [optional]
 **page_count** | Option<**i32**> |  | [optional]
-**release_date** | Option<**String**> |  | [optional]
+**release_date** | Option<**chrono::DateTime<chrono::FixedOffset>**> |  | [optional]
 **images** | Option<[**Vec<models::MediaCover>**](MediaCover.md)> |  | [optional]
 **links** | Option<[**Vec<models::Links>**](Links.md)> |  | [optional]
 **ratings** | Option<[**models::Ratings**](Ratings.md)> |  | [optional]
